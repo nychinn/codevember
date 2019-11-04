@@ -1,0 +1,383 @@
+html, body {
+    min-height: 100vh;
+    display: grid;
+}
+  
+body {
+    /* declare variables */
+    --bg-color: #DDDDDD;
+    --skin-color: #F9E4DC;
+    --eye-color: #000000;
+    --eyelash-color: #000000;
+    --hair-color: gold;
+    --hair-color--devil: #352D39;
+    --blush-color: rgba(255,173,181, 0.6);
+    --mouth-color: pink;
+    --dress-color: white;
+    --dress-color--devil: #000000;
+
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+}
+  
+.container {
+    margin: auto;
+    width: 40rem;
+    height: 40rem;
+    background-color: var(--bg-color);
+    position: relative;
+}
+
+.halo,
+.halo::before,
+.halo::after,
+.horn,
+.horn::after,
+.head,
+.head__eyes,
+.hair,
+.hair::after,
+.hair-top,
+.fringe,
+.fringe::after,
+.blush,
+.mouth,
+.eye,
+.eyelash,
+.eyelash::before,
+.eyelash::after,
+.eyebrow,
+.body,
+.dress,
+.arm,
+.arm::after,
+.foot,
+.foot::after {
+    display: block;
+    position: absolute;
+}
+
+.head {
+    width: 20rem;
+    height: 20rem;
+    background-color: var(--skin-color);
+    border-radius: 60% 60% 50% 50%;
+    left: 50%;
+    margin-left: -10rem;
+    z-index: 3;
+}
+
+.halo {
+    background-color: white;
+    width: 20rem;
+    height: 3rem;
+    z-index: 2;
+    border-radius: 50%;
+}
+
+.hair {
+    width: 25rem;
+    height: 25rem;
+    background-color: var(--hair-color);
+    left: 50%;
+    margin-left: -12.5rem;
+    margin-top: -2rem;
+    border-radius: 60% 60% 50% 50%;
+}
+
+.hair::after {
+    content: '';
+    background-color: var(--hair-color);
+    width: 25rem;
+    height: 20rem;
+    margin-top: 12rem;
+}
+
+.hair-top {
+    width: 18rem;
+    height: 9rem;
+    background-color: var(--hair-color);
+    z-index: 4;
+    left: 50%;
+    top: 0rem;
+    margin-left: -9rem;
+    border-radius: 50% 50% 0 0;
+}
+
+.horn {
+    width: 0;
+    height: 0;
+    border-left: 2rem solid transparent;
+    border-right: 2rem solid transparent;
+    border-bottom: 4rem solid black;
+    z-index: 2;
+    display: none;
+}
+
+.horn::after {
+    content: '';
+    width: 4rem;
+    height: 1.5rem;
+    background-color: black;
+    border-radius: 0 0 6rem 6rem;
+    left: -2rem;
+    top: 4rem;
+}
+
+.horn--left {
+    transform: rotate(-30deg);
+    left: 8rem;
+}
+
+.horn--right {
+    transform: rotate(30deg);
+    right: 8rem
+}
+
+.fringe {
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--hair-color);
+    transform: rotate(15deg);
+    top: 4rem;
+    z-index: 1;
+}
+
+.fringe::after {
+    content: '';
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--hair-color);
+    margin-left: 5rem;
+    transform: rotate(-10deg);
+    top: -0.25rem;
+}
+
+.fringe--left {
+    left: 10rem;
+}
+
+.fringe--right {
+    transform: rotate(-15deg) scaleX(-1);
+    right: 10rem;
+}
+
+.eye {
+    width: 3.5rem;
+    height: 4.5rem;
+    background-color: var(--eye-color);
+    border-radius: 3rem;
+    top: 10.5rem;
+    animation: blink 3s infinite 3s;
+}
+
+.eye--blink {
+    height: 1rem;
+    width: 3.5rem;
+    border-radius: 0;
+    top: 12rem;
+    transform: scaleY(-1);
+}
+
+.eye--blink .eyelash {
+    top: -0.8rem !important;
+}
+
+.eye--left {
+    left: 3.5rem;
+}
+
+.eye--right {
+    right: 3.5rem;
+}
+
+.eyelash {
+    background-color: var(--eyelash-color);
+    width: 0.4rem;
+    height: 1.5rem;
+    left: 1.5rem;
+    top: -0.6rem;
+}
+
+.eyelash::before,
+.eyelash::after {
+    content: '';
+    background-color: var(--eyelash-color);
+    width: 0.4rem;
+    height: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.eyelash::before {
+    transform: rotate(-35deg);
+    margin-left: -0.5rem;
+}
+
+.eyelash::after {
+    transform: rotate(35deg);
+    margin-left: 0.5rem;
+}
+
+.eyebrow {
+    width: 3em; 
+    height: 0.5em;
+    background-color: black;
+    top: 9.5em;
+    display: none;
+}
+
+.eyebrow--left {
+    left: 3.5em;
+    transform: rotate(10deg);
+}
+
+.eyebrow--right {
+    right: 3.5em;
+    transform: rotate(-10deg);
+}
+
+.blush {
+    height: 2.5rem;
+    width: 3.5rem;
+    background-color: var(--blush-color);
+    z-index: 2;
+    border-radius: 3rem;
+    top: 14rem;
+}
+
+.blush--left {
+    left: 2rem;
+}
+
+.blush--right {
+    right: 2rem;
+}
+
+.mouth {
+    background-color: var(--mouth-color);
+    height: 2em;
+    width: 4em;
+    border-radius: 0 0 2em 2em;
+    top: 16em;
+    left: 50%;
+    margin-left: -2em;
+}
+
+.dress {
+    border-bottom: 16em solid var(--dress-color);
+    border-left: 4em solid transparent;
+    border-right: 4em solid transparent;
+    height: 0;
+    width: 10em;
+    top: 18rem;
+    left: 50%;
+    margin-left: -9em;
+    z-index: 2;
+}
+
+.arm {
+    width: 4rem;
+    height: 8rem;
+    background-color: var(--skin-color);
+    top: 18rem;
+}
+
+.arm::after {
+    content: '';
+    width: 4rem;
+    height: 2.5rem;
+    border-radius: 0 0 5rem 5rem;
+    background-color: var(--skin-color); 
+    bottom: -2.5rem;
+}
+
+.arm--left {
+    left: 13rem;
+    transform: rotate(30deg);
+}
+
+.arm--right {
+    right: 13rem;
+    transform: rotate(-30deg);
+}
+
+.foot {
+    width: 4rem;
+    height: 8rem;
+    background-color: var(--skin-color);
+    top: 30rem;
+}
+
+.foot::after {
+    content: '';
+    width: 4rem;
+    height: 2.5rem;
+    border-radius: 0 0 5rem 5rem;
+    background-color: var(--skin-color); 
+    bottom: -2.5rem;
+
+}
+
+.foot--left {
+    left: 15.5rem;
+}
+
+.foot--right {
+    right: 15.5rem;
+}
+
+
+
+/* Girl: Devil */
+.girl--devil .hair,
+.girl--devil .hair::after,
+.girl--devil .hair-top,
+.girl--devil .fringe {
+    background-color: var(--hair-color--devil);
+}
+
+.girl--devil .dress {
+    border-bottom-color: var(--dress-color--devil);
+}
+
+.girl--devil .mouth {
+    transform: scaleY(-1);
+}
+
+.girl--devil .eyebrow,
+.girl--devil .horn {
+    display: block;
+}
+
+
+
+/* Animations */
+@keyframes blink {
+    0%{
+		transform:scaleY(1)
+	}	
+	18%{
+		transform:scaleY(1)
+	}
+	20%{
+		transform:scaleY(0)
+	}	
+	25%{
+		transform:scaleY(1)
+	}	
+	38%{
+		transform:scaleY(1)
+	}	
+	40%{
+		transform:scaleY(0)
+	}	
+	45%{
+		transform:scaleY(1)
+	}
+	80% {
+		transform:scaleY(1)
+	}
+}
