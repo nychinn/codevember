@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Day 1 - Contrast</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,7 +16,7 @@
      -->
 
     <div class="container">
-        <div class="girl">
+        <div class="girl girl--devil">
             <div class="hair"></div>
             <div class="hair-top"></div>
             <div class="fringe fringe--left"></div>
@@ -33,17 +34,39 @@
                 </div>
                 <div class="ear ear--left"></div>
                 <div class="ear ear--right"></div>
+                <div class="nose"></div>
                 <div class="blush blush--left"></div>
                 <div class="blush blush--right"></div>
                 <div class="mouth"></div>
             </div>
-            <div class="dress"></div>
+            <div class="dress">
+                <div class="emblem"></div>
+            </div>
             <div class="arm arm--left"></div>
             <div class="arm arm--right"></div>
             <div class="foot foot--left"></div>
             <div class="foot foot--right"></div>
         </div>
     </div>
+    <button>Switch</button>
+
+    <script>
+        let button = document.querySelector('button');
+        let girl = document.querySelector('.girl');
+        let body = document.querySelector('body');
+
+        function switchGirl() {
+            if ( girl.classList.contains('girl--devil') ) {
+                girl.classList.remove('girl--devil');
+                body.classList.remove('is-dark');
+            } else {
+                girl.classList.add('girl--devil');
+                body.classList.add('is-dark');
+            }
+        }
+
+        button.addEventListener('click', switchGirl);
+    </script>
     
 </body>
 </html>

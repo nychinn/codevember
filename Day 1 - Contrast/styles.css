@@ -5,30 +5,57 @@ html, body {
   
 body {
     /* declare variables */
-    --bg-color: #DDDDDD;
-    --skin-color: #F9E4DC;
+    --bg-color: #F7B7C9;
+    --bg-color--dark: #724969;
+    --skin-color: #FFDEC7;
     --eye-color: #000000;
     --eyelash-color: #000000;
-    --hair-color: gold;
+    --hair-color: #CCAF81;
     --hair-color--devil: #352D39;
     --blush-color: rgba(255,173,181, 0.6);
-    --mouth-color: pink;
+    --mouth-color: #FFB5A8;
     --dress-color: white;
     --dress-color--devil: #000000;
+    --emblem-color: #F4D06F;
+    --emblem-color--devil: #ffffff;
+    --button-color: #444;
+    --button-color--pressed: #222;
 
     display: flex;
+    flex-direction: column;
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: #eee;
+    background-color: var(--bg-color);
+    transition: .5s ease-in-out;
+}
+
+body.is-dark {
+    background-color: var(--bg-color--dark)
 }
   
 .container {
-    margin: auto;
     width: 40rem;
     height: 40rem;
-    background-color: var(--bg-color);
     position: relative;
+    margin: 0 0 2rem;
+}
+
+button {
+    text-align: center;
+    background-color: var(--button-color);
+    border: 0;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+    padding: 1rem 2rem;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+}
+
+button:active {
+    background-color: var(--button-color--pressed);
 }
 
 .halo,
@@ -44,20 +71,25 @@ body {
 .fringe,
 .fringe::after,
 .blush,
+.nose,
 .mouth,
 .eye,
+.eye::after,
 .eyelash,
 .eyelash::before,
 .eyelash::after,
 .eyebrow,
 .body,
 .dress,
+.emblem,
+.emblem::after,
 .arm,
 .arm::after,
 .foot,
 .foot::after {
     display: block;
     position: absolute;
+    transition: .5s ease-in-out;
 }
 
 .head {
@@ -102,7 +134,7 @@ body {
     background-color: var(--hair-color);
     z-index: 4;
     left: 50%;
-    top: 0rem;
+    top: -0.5rem;
     margin-left: -9rem;
     border-radius: 50% 50% 0 0;
 }
@@ -113,8 +145,8 @@ body {
     border-left: 2rem solid transparent;
     border-right: 2rem solid transparent;
     border-bottom: 4rem solid black;
-    z-index: 2;
-    display: none;
+    z-index: 4;
+    opacity: 0;
 }
 
 .horn::after {
@@ -166,12 +198,34 @@ body {
 }
 
 .eye {
-    width: 3.5rem;
-    height: 4.5rem;
+    width: 4rem;
+    height: 5rem;
     background-color: var(--eye-color);
     border-radius: 3rem;
     top: 10.5rem;
     animation: blink 3s infinite 3s;
+}
+
+.eye::after {
+    content: '';
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: white;
+    border-radius: 50%;
+    top: 0.75rem;
+    right: 0.75rem;
+}
+
+.eye::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 2rem;
+    height: 3rem;
+    background-color: steelblue;
+    border-radius: 2rem;
+    top: 1rem;
+    left: 1rem;
 }
 
 .eye--blink {
@@ -187,18 +241,18 @@ body {
 }
 
 .eye--left {
-    left: 3.5rem;
+    left: 3rem;
 }
 
 .eye--right {
-    right: 3.5rem;
+    right: 3rem;
 }
 
 .eyelash {
     background-color: var(--eyelash-color);
     width: 0.4rem;
     height: 1.5rem;
-    left: 1.5rem;
+    left: 1.75rem;
     top: -0.6rem;
 }
 
@@ -224,19 +278,18 @@ body {
 .eyebrow {
     width: 3em; 
     height: 0.5em;
-    background-color: black;
-    top: 9.5em;
-    display: none;
+    background-color: var(--hair-color);
+    top: 9em;
 }
 
 .eyebrow--left {
     left: 3.5em;
-    transform: rotate(10deg);
+    transform: rotate(-10deg);
 }
 
 .eyebrow--right {
     right: 3.5em;
-    transform: rotate(-10deg);
+    transform: rotate(10deg);
 }
 
 .blush {
@@ -256,12 +309,21 @@ body {
     right: 2rem;
 }
 
+.nose {
+    width: 0.5rem;
+    height: 1rem;
+    background-color: var(--mouth-color);
+    top: 13.5rem;
+    left: 50%;
+    margin-left: -0.25rem;
+}
+
 .mouth {
     background-color: var(--mouth-color);
     height: 2em;
     width: 4em;
     border-radius: 0 0 2em 2em;
-    top: 16em;
+    top: 16.5em;
     left: 50%;
     margin-left: -2em;
 }
@@ -278,6 +340,26 @@ body {
     z-index: 2;
 }
 
+.emblem {
+    width: 6rem;
+    height: 6rem;
+    background-color: var(--emblem-color);
+    border-radius: 50%;
+    top: 3rem;
+    left: 50%;
+    margin-left: -3rem;
+}
+
+.emblem::after {
+    content: '';
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--dress-color);
+    border-radius: 50%;
+    left: 0.5rem;
+    top: -0.5rem;
+}
+
 .arm {
     width: 4rem;
     height: 8rem;
@@ -291,7 +373,7 @@ body {
     height: 2.5rem;
     border-radius: 0 0 5rem 5rem;
     background-color: var(--skin-color); 
-    bottom: -2.5rem;
+    bottom: -2.25rem;
 }
 
 .arm--left {
@@ -347,10 +429,29 @@ body {
     transform: scaleY(-1);
 }
 
-.girl--devil .eyebrow,
 .girl--devil .horn {
-    display: block;
+    opacity: 1;
 }
+
+.girl--devil .eyebrow {
+    background-color: var(--hair-color--devil);
+}
+
+.girl--devil .eyebrow--left {
+    transform: rotate(10deg);
+}
+
+.girl--devil .eyebrow--right {
+    transform: rotate(-10deg);
+}
+
+.girl--devil .emblem {
+    background-color: var(--emblem-color--devil);
+}
+
+.girl--devil .emblem::after {
+    background-color: var(--dress-color--devil);
+} 
 
 
 
